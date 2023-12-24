@@ -11,7 +11,7 @@ permissions: {}
 jobs:
   release:
     # prevents this action from running on forks
-    if: github.repository == 'willin/log-lu'
+    if: github.repository == 'willin/hono-zod-body-validator'
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
