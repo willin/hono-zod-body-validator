@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import type { Equal, Expect } from 'hono/utils/types';
 import { describe, it, expect } from 'vitest';
 import { z } from 'zod';
-import { jfValidator } from '../src';
+import { zBodyValidator } from '../src';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 type ExtractSchema<T> = T extends Hono<infer _, infer S> ? S : never;
@@ -15,7 +15,7 @@ describe('Basic', () => {
     age: z.number()
   });
 
-  const route = app.post('/author', jfValidator(jsonSchema), (c) => {
+  const route = app.post('/author', zBodyValidator(jsonSchema), (c) => {
     const data = c.req.valid('form');
 
     return c.json({
@@ -91,7 +91,7 @@ describe('With Hook', () => {
 
   app.post(
     '/post',
-    jfValidator(schema, (result, c) => {
+    zBodyValidator(schema, (result, c) => {
       if (!result.success) {
         return c.text(`${result.data.id} is invalid!`, 400);
       }
