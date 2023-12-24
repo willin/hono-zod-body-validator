@@ -1,6 +1,6 @@
 {
   "name": "hono-zod-body-validator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Zod Json/Form Validator Middleware for log-lu",
   "require": "./dist/index.js",
   "import": "./dist/index.mjs",
